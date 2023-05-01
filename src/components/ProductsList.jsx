@@ -1,17 +1,19 @@
-import { useReducer, useRef } from "react";
-import { useState } from "react";
-import productsReducer, { initialState } from "../reducers/productsReducer";
-import { types } from "../reducers/types";
+import { useReducer, useRef, useState } from "react";
+import productsReducer, {
+  initialState,
+} from "../productReducer/productReducer";
+import { types } from "../productReducer/types";
 
 const ProductsList = () => {
-  const inputAddProduct = useRef();
+  const inputRef = useRef();
   const [productsList, dispatch] = useReducer(productsReducer, initialState);
   const [product, setProduct] = useState("");
   return (
     <>
+      <h1>Products App</h1>
       <label htmlFor="addProduct">Type a product: </label>
       <input
-        ref={inputAddProduct}
+        ref={inputRef}
         type="text"
         id="addProduct"
         value={product}
@@ -19,7 +21,7 @@ const ProductsList = () => {
       />
       <button
         onClick={() => {
-          inputAddProduct.current.focus();
+          inputRef.current.focus();
           setProduct("");
           dispatch({
             type: types.ADD,
@@ -27,7 +29,7 @@ const ProductsList = () => {
           });
         }}
       >
-        Add Product
+        Add a Product
       </button>
       {productsList.map((product) => (
         <div key={product.id}>

@@ -1,14 +1,14 @@
-import { types } from "../reducers/types";
+import { types } from "../productReducer/types";
 
 export const initialState = [
   {
     id: 1,
-    name: "Papas",
-    quantity: 3,
+    name: "Arandanos",
+    quantity: 4,
   },
   {
     id: 2,
-    name: "Queso",
+    name: "Bacon",
     quantity: 2,
   },
 ];
